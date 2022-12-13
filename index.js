@@ -1,6 +1,7 @@
 
 const express = require('express')
 const mysql = require('mysql')
+require('dotenv').config();
 
 const app = express()
 
@@ -8,9 +9,9 @@ app.use(express.json())
 
 const conectBD = mysql.createConnection({
     host: 'localhost',
-    user: 'root',
-    password: 'root',
-    database: 'vehiculo'
+    user: process.env.USER,
+    password: process.env.PASSWORD,
+    database: process.env.DATABASE
 })
 
 
@@ -112,6 +113,6 @@ app.delete('/deletecarro/:id', (req,res) => {
 })
 
 
-app.listen(4000,() => {
-    console.log('server running in port 4000')
+app.listen(3000, () => {
+    console.log('server running in port 3000')
 })
